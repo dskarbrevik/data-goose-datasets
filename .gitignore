@@ -180,5 +180,11 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# macos
+*.DS_Store
+
+# data for datasets
+/data
+
 # dev work
 /experiments

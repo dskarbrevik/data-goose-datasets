@@ -11,12 +11,16 @@ dependencies = [
     "jupyterlab>=4.4.5",
     "pandas>=2.3.1",
     "rich>=14.1.0",
+    "typer>=0.16.0",
     "wikipedia-api>=0.8.1",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[project.scripts]
+dgd = "dgd.cli:app"
 
 [tool.hatch.build.targets.wheel]
 packages = ["dgd"]

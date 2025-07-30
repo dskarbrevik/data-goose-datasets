@@ -35,7 +35,6 @@ def publish_dataset_to_huggingface(
     # Create repo if it doesn't exist
     api.create_repo(repo_id=repo_id, token=token, repo_type=repo_type, exist_ok=True)
 
-    # Clone repo locally (in a temp dir)
     from tempfile import TemporaryDirectory
     import shutil
     dataset_path = Path(dataset_path)
@@ -44,7 +43,6 @@ def publish_dataset_to_huggingface(
         repo = Repository(local_dir=tmpdir, clone_from=repo_id, repo_type=repo_type, token=token)
         repo.git_pull()
 
-        # Copy dataset files into repo using pathlib
         if dataset_path.is_dir():
             for item in dataset_path.iterdir():
                 dest = tmpdir_path / item.name

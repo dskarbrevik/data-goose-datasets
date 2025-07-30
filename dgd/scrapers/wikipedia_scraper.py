@@ -5,8 +5,8 @@ import pandas as pd
 from rich.progress import Progress
 
 class WikipediaScraper:
-    def __init__(self, language: str = 'en'):
-        self.wiki = wikipediaapi.Wikipedia(language)
+    def __init__(self, language: str = 'en', user_agent: str = 'data-goose-wikipedia-scraper/1.0'):
+        self.wiki = wikipediaapi.Wikipedia(user_agent=user_agent, language=language)
 
     def scrape(
         self,
