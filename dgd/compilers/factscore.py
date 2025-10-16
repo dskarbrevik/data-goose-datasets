@@ -23,6 +23,7 @@ def compile(data_path: str, language: str = 'en', output_jsonl_path: str = None)
     # get entities
     dataset = datasets.load_from_disk(data_path)
     df = dataset.to_pandas()
+    df = df.iloc[:10]
     entities = df["entity"].unique().tolist()
 
     # scrape wikipedia for entities

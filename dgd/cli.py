@@ -22,7 +22,7 @@ def factscore(
         # If output is a directory or has no extension, treat as directory
         output_path.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"factscore_scrape_{timestamp}.jsonl"
+        filename = f"factscore_wikiscrape_{timestamp}.jsonl"
         output_file = output_path / filename
     else:
         # If output is a file, check extension

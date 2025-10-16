@@ -26,12 +26,17 @@ class WikipediaScraper:
         if isinstance(entities, str):
             entities = [entities]
         result = {}
+        max_entity_len = max(len(str(e)) for e in entities) + 2
         with Progress() as progress:
+            start_time = progress.get_time()
             task = progress.add_task("Scraping Wikipedia", total=len(entities))
             for entity in entities:
                 page = self.wiki.page(entity)
                 result[entity] = page.text if page.exists() else ''
-                progress.update(task, advance=1, description=f"Scraping: {entity}")
+                progress.update(task, advance=1, description=f"Scraping: {entity:<{max_entity_len}}")
+            end_time = progress.get_time()
+            elapsed = end_time - start_time
+            progress.console.print(f"\nTotal elapsed time: {elapsed:.2f} seconds")
         
         if output == 'dict':
             data = result
